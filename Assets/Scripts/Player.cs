@@ -8,41 +8,25 @@ public class Player : MonoBehaviour
     [SerializeField] float rotSpeed;
     [SerializeField] float gravity = 9.8f;
 
-    float rotX;
-    float rotY;
-    float gravValue;
+    float rotation;
+    float gravVelocity;
 
-    CharacterController player;
-    Vector3 moveVector = new Vector3();
-
-    //DEBUG
-    float timeElapsed = 0f;
-    bool keepCount = true;
+    CharacterController character;
 
     void Start()
     {
-        // Locks the cursor to Game Window (Esc. key frees it in editor)
-        Cursor.lockState = CursorLockMode.Locked;
-
-        player = GetComponent<CharacterController>();
+        Cursor.lockState = CursorLockMode.Locked; // Locks the cursor to Game Window (Esc. key frees it in editor)
+        character = GetComponent<CharacterController>(); // References the Character Controller
     }
 
     void Update()
     {
-        MouseRotation(); // Moving the mouse rotates the player left and right
-        MoveForward(); // Forward input is added to Movement Vector
-        ObeyGravity(); // Gravity is added to Movement Vector
-        ApplyMovement(); // Movement Vector is applied to Character Controller
-
-        print("Gravity: " + ((500 - transform.position.y) / (timeElapsed * timeElapsed)));
-        timeElapsed += Time.deltaTime;
-    }
-    void FixedUpdate()
-    {
+        UpdateRotation(); // Moving the mouse rotates the player left and right
+        UpdateXZ(); // Planar input is added to player movement
+        UpdateGravity(); // Gravity is added to player movement
     }
 
-    void MouseRotation() { if (Input.GetAxisRaw("Mouse X") != 0) { rotY += Input.GetAxis("Mouse X") * rotSpeed; transform.eulerAngles = new Vector3(0, rotY); } }
-    void MoveForward() { if (Input.GetAxisRaw("Vertical") == 1) { player.Move(transform.forward * Time.deltaTime * moveSpeed); } }
-    void ObeyGravity() { if (player.isGrounded) { moveVector.y = 0; } gravValue = gravity * Time.deltaTime; moveVector.y += -gravValue * Time.deltaTime; }
-    void ApplyMovement() { player.Move(moveVector); }
+    void UpdateRotation() { if (Input.GetAxisRaw("Mouse X") != 0) { rotation += Input.GetAxis("Mouse X") * rotSpeed; transform.eulerAngles = new Vector3(0, rotation); } }
+    void UpdateXZ() { character.Move(moveSpeed * Time.deltaTime * (transform.forward * Input.GetAxisRaw("Vertical") + transform.right * Input.GetAxisRaw("Horizontal")).normalized); }
+    void UpdateGravity() { if (character.isGrounded) { gravVelocity = 0; } else { gravVelocity += gravity * Time.deltaTime; } character.Move(-gravVelocity * Time.deltaTime * transform.up); }
 }

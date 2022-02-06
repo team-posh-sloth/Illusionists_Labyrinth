@@ -37,6 +37,6 @@ sysinfo.txt
 *.unitypackage
 
 # CUSTOM IGNORES
-*/[Ll]ogs/
+[Ll]ogs/
 *.log
 *.vsconfig
