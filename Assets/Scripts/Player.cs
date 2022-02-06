@@ -1,15 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System.Collections; using System.Collections.Generic; using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] float moveSpeed;
-    [SerializeField] float rotSpeed;
-    [SerializeField] float gravity = 9.8f;
+    [SerializeField] float moveSpeed, rotSpeed, gravity = 9.8f;
 
-    float rotation;
-    float gravVelocity;
+    float rotation, gravVelocity;
 
     CharacterController character;
 
