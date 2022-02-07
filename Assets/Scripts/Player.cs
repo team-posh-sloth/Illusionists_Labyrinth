@@ -21,7 +21,10 @@ public class Player : MonoBehaviour
         UpdateGravity(); // Gravity is added to player movement
     }
 
-    void UpdateRotation() { if (Input.GetAxisRaw("Mouse X") != 0) { rotation += Input.GetAxis("Mouse X") * rotSpeed; transform.eulerAngles = new Vector3(0, rotation); } }
+    // Mouse input on the X axis increases the object's rotation on its Y axis (rotSpeed is the maximum rotation in degrees per frame)
+    void UpdateRotation() { rotation += Input.GetAxis("Mouse X") * rotSpeed; transform.eulerAngles = new Vector3(0, rotation); }
+    // Planar input (i.e. WASD) creates a normalized vector which is then multiplied to the magnitude of units (moveSpeed) per second (Time.deltaTime) of character movement
     void UpdateXZ() { character.Move(moveSpeed * Time.deltaTime * (transform.forward * Input.GetAxisRaw("Vertical") + transform.right * Input.GetAxisRaw("Horizontal")).normalized); }
     void UpdateGravity() { if (character.isGrounded) { gravVelocity = 0; } else { gravVelocity += gravity * Time.deltaTime; } character.Move(-gravVelocity * Time.deltaTime * transform.up); }
+
 }
