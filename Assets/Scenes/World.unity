@@ -302,6 +302,7 @@ MonoBehaviour:
   moveSpeed: 5
   rotSpeed: 2
   gravity: 9.8
+  normalForce: 1
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
