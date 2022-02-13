@@ -1,59 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class Interactable : MonoBehaviour
 {
-    [SerializeField] GameObject dialogueBubble;
+    bool inRange;
 
-    [SerializeField] [Multiline(6)] [TextArea(1, 6)] string text;
+    void Update() { if (Input.GetKeyDown(KeyCode.E) && inRange) { Interact(); } } // Interact is called when pressing "E" in trigger range (GetKeyDown works most reliably in Update)
 
-    void Start()
-    {
-        dialogueBubble.GetComponentInChildren<TMP_Text>().text = text;
-    }
+    void OnTriggerEnter(Collider other) { if (other.name == "Player") { Detect(); inRange = true; } } // Detect is called when player enters trigger range
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.name == "Player")
-        {
-            Detect();
-        }
-    }
+    void OnTriggerStay(Collider other) { if (other.name == "Player") { Watch(); } } // Watch is called when player stays in trigger range
 
-    void OnTriggerStay(Collider other)
-    {
-        dialogueBubble.transform.LookAt(new Vector3(Camera.main.transform.position.x, dialogueBubble.transform.position.y, Camera.main.transform.position.z));
-        if (other.name == "Player")
-        {
-            if (Input.GetKey(KeyCode.E))
-            {
-                Interact();
-            }
-        }
-    }
+    void OnTriggerExit(Collider other) { if (other.name == "Player") { Undetect(); inRange = false; } } // Undetect is called when player exits trigger range
 
-    void OnTriggerExit(Collider other)
-    {
-        if (other.name == "Player")
-        {
-            Undetect();
-        }
-    }
+    protected virtual void Detect() { } // Virtual function to be customized by children (i.e. Dialogue)
 
-    public void Detect()
-    {
-        dialogueBubble.GetComponent<Animator>().Play("popup");
-    }
+    protected virtual void Watch() { } // Virtual function to be customized by children
 
-    public void Undetect()
-    {
-        dialogueBubble.GetComponent<Animator>().Play("popdown");
-    }
+    protected virtual void Interact() { } // Virtual function to be customized by children
 
-    public void Interact()
-    {
-    }
+    protected virtual void Undetect() { } // Virtual function to be customized by children
 
 }
