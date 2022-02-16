@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] [Tooltip("Velocity per second")] float gravity = 9.8f, normalForce = 1f;
+    [SerializeField] [Tooltip("Velocity per second")] float gravity = 20f, normalForce = 1f;
     [SerializeField] [Tooltip("Meters per second")] float moveSpeed;
     [SerializeField] [Range(0, 360)] [Tooltip("Max input degrees per second")] float rotSpeed;
     [SerializeField] [Range(0, 5)] [Tooltip("Max input zoom percentage per second")] float zoomSpeed;
@@ -13,11 +13,14 @@ public class Player : MonoBehaviour
     
     CharacterController character;
 
+    Animator anim;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked; // Locks the cursor to Game Window (Esc. key frees it in editor)
         character = GetComponent<CharacterController>(); // References the Character Controller
         cam = Camera.main.transform; // References the main camera transform
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -26,6 +29,8 @@ public class Player : MonoBehaviour
         UpdateZoom(); // Moving the mouse on the Y axis controls camera zoom on the player
         UpdateXZMovement(); // Planar input is added to player movement
         UpdateGravity(); // Gravity is added to player movement
+
+        UpdateActions();
     }
 
     // Mouse input on the X axis increases the object's rotation on its Y axis (rotSpeed is the maximum rotation in degrees per second)
@@ -50,6 +55,22 @@ public class Player : MonoBehaviour
         character.Move(gravVelocity * Time.deltaTime * -transform.up);  // Move() must be called before isGrounded              <--|| required for proper   ||
         if (character.isGrounded) { gravVelocity = normalForce; }       // A static normal force must be applied when grounded  <--|| ground detection      ||
         else { gravVelocity += gravity * Time.deltaTime; } // increase gravVelocity by meters (gravity) per second (deltaTime)
+    }
+
+    void UpdateActions()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            anim.Play("attack");
+        }
+        if (Input.GetMouseButton(1))
+        {
+            anim.Play("block");
+        }
+        else if (anim.GetCurrentAnimatorStateInfo(0).IsName("block"))
+        {
+            anim.Play("idle");
+        }
     }
 
 }
