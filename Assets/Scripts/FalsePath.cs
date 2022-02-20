@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class FalsePath : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    void OnCollisionEnter(Collision collision)
     {
-        
+        print("We have made contact");
+        if (collision.gameObject.name == "Player")
+        {
+            gameObject.GetComponent<MeshRenderer>().enabled = true;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        
+        print("We have made contact with controllercollider");
     }
+
 }

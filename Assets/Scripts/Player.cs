@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -73,4 +74,21 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.collider.tag == "False Path")
+        {
+            StartCoroutine(FadeIn(hit.gameObject.GetComponent<MeshRenderer>()));
+        }
+    }
+
+    IEnumerator FadeIn(MeshRenderer mesh)
+    {
+        if (!mesh.enabled) { mesh.enabled = true; } else yield break;
+        for (float i = 0; i <= 1; i += Time.deltaTime)
+        {
+            mesh.material.color = new Color(mesh.material.color.r, mesh.material.color.g, mesh.material.color.b, i);
+            yield return null;
+        }
+    }
 }
