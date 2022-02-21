@@ -40,3 +40,4 @@ sysinfo.txt
 [Ll]ogs/
 *.log
 *.vsconfig
+*.dwlt
