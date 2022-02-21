@@ -84,7 +84,21 @@ public class Player : MonoBehaviour
 
     IEnumerator FadeIn(MeshRenderer mesh)
     {
-        if (!mesh.enabled) { mesh.enabled = true; } else yield break;
+        if (!mesh.enabled)
+        {
+            mesh.enabled = true;
+
+            // Set mesh to transparent (see Unity Documentation "Changing the Rendering Mode using a Script")
+            mesh.material.SetOverrideTag("RenderType", "Transparent");
+            mesh.material.SetFloat("_SrcBlend", (float)UnityEngine.Rendering.BlendMode.One);
+            mesh.material.SetFloat("_DstBlend", (float)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+            mesh.material.SetFloat("_ZWrite", 0.0f);
+            mesh.material.DisableKeyword("_ALPHATEST_ON");
+            mesh.material.DisableKeyword("_ALPHABLEND_ON");
+            mesh.material.EnableKeyword("_ALPHAPREMULTIPLY_ON");
+            mesh.material.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Transparent;
+        }
+        else yield break;
         for (float i = 0; i <= 1; i += Time.deltaTime)
         {
             mesh.material.color = new Color(mesh.material.color.r, mesh.material.color.g, mesh.material.color.b, i);
