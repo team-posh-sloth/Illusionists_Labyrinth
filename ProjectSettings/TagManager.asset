@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - False Path
+  - Enemy
+  - Player Weapon
   layers:
   - Default
   - TransparentFX

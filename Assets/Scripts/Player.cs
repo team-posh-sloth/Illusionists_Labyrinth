@@ -7,12 +7,16 @@ public class Player : MonoBehaviour
     [SerializeField] [Tooltip("Meters per second")] float moveSpeed;
     [SerializeField] [Range(0, 360)] [Tooltip("Max input degrees per second")] float rotSpeed;
     [SerializeField] [Range(0, 5)] [Tooltip("Max input zoom percentage per second")] float zoomSpeed;
+    [SerializeField] int hitPointMax = 3;
 
     float xRot, yRot, yPos, zPos, gravVelocity, zoomPercentage, runMultiplier;
+
+    int hitPoints;
 
     Transform cam;
     
     CharacterController character;
+    Vector3 startPosition;
 
     Animator anim;
 
@@ -22,6 +26,8 @@ public class Player : MonoBehaviour
         character = GetComponent<CharacterController>(); // References the Character Controller
         cam = Camera.main.transform; // References the main camera transform
         anim = GetComponent<Animator>();
+        hitPoints = hitPointMax;
+        startPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
 
     void Update()
@@ -103,6 +109,17 @@ public class Player : MonoBehaviour
         {
             mesh.material.color = new Color(mesh.material.color.r, mesh.material.color.g, mesh.material.color.b, i);
             yield return null;
+        }
+    }
+
+    public void takeDamage()
+    {
+        print("Ow");
+        character.transform.position = startPosition;
+
+        hitPoints -= 0;
+        if (hitPoints <= 0)
+        {
         }
     }
 }

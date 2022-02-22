@@ -8,7 +8,7 @@ public class MazeEnemy : MonoBehaviour
 
     float gravVelocity;
 
-    bool followPlayer, returnHome, attackPlayer;
+    bool followPlayer, returnHome, attackPlayer, takeDamage;
 
     Vector3 moveDirection, homePosition;
 
@@ -78,7 +78,7 @@ public class MazeEnemy : MonoBehaviour
                     anim.SetBool("Walking", true);
                     moveDirection = transform.forward;
                 }
-                else { moveDirection = new Vector3(); enemy.transform.LookAt(new Vector3(player.position.x, 0f, player.position.z)); returnHome = false; anim.SetBool("Walking", false); attackPlayer = true; }
+                else { moveDirection = new Vector3(); enemy.transform.LookAt(new Vector3(player.position.x, 0f, player.position.z)); returnHome = false; anim.SetBool("Walking", false); }
             }
         }
     }
