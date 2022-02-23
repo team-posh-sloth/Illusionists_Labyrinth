@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class MazeEnemy : MonoBehaviour
 {
+    public bool isReal;
+
     [SerializeField] float gravity = 20f, normalForce = 1f, moveSpeed = 7f, destinationOffset = 10f, homeOffset = 1f, homeRange = 20f;
+
+    [SerializeField] int hitPointMax = 3;
+    public int hitPoints;
 
     float gravVelocity;
 
-    bool followPlayer, returnHome, attackPlayer, takeDamage;
+    bool followPlayer, returnHome, attackPlayer;
 
-    Vector3 moveDirection, homePosition;
+    Vector3 moveDirection;
+    public Vector3 homePosition;
 
     CharacterController enemy;
 
@@ -24,6 +30,7 @@ public class MazeEnemy : MonoBehaviour
         moveDirection = new Vector3();
         homePosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         anim = GetComponent<Animator>();
+        hitPoints = hitPointMax;
     }
 
     void Update()
@@ -103,5 +110,12 @@ public class MazeEnemy : MonoBehaviour
     void UpdateMovement()
     {
         enemy.Move(moveSpeed * Time.deltaTime * moveDirection);
+    }
+
+    public void TeleportHome()
+    {
+        enemy.enabled = false;
+        gameObject.transform.localPosition = new Vector3(homePosition.x, homePosition.y, homePosition.z);
+        enemy.enabled = true;
     }
 }

@@ -114,12 +114,13 @@ public class Player : MonoBehaviour
 
     public void takeDamage()
     {
-        print("Ow");
-        character.transform.position = startPosition;
-
-        hitPoints -= 0;
+        hitPoints -= 1;
         if (hitPoints <= 0)
         {
+            character.enabled = false;
+            gameObject.transform.localPosition = new Vector3(startPosition.x, startPosition.y, startPosition.z);
+            character.enabled = true;
+            hitPoints = hitPointMax;
         }
     }
 }

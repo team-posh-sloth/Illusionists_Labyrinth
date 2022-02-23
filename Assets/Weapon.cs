@@ -13,10 +13,25 @@ public class Weapon : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy" && gameObject.tag == "Player Weapon" && !iFrames)
+        if (other.TryGetComponent(out MazeEnemy enemy) && gameObject.tag == "Player Weapon" && !iFrames)
         {
-            iFrames = true;
-            StartCoroutine(FlashEnemy(other.gameObject));
+            if (enemy.isReal)
+            {
+                enemy.hitPoints -= 1;
+                if (enemy.hitPoints <= 0)
+                {
+                    Destroy(enemy.gameObject);
+                }
+                else
+                {
+                    iFrames = true;
+                    StartCoroutine(FlashEnemy(enemy.gameObject));
+                }
+            }
+            else
+            {
+                enemy.TeleportHome();
+            }
         }
         if (other.name == "Player" && gameObject.tag != "Player Weapon" && !iFramesPlayer)
         {
