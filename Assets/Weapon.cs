@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] float iTime, blinkTime;
+    [SerializeField] float iTime, blinkTime, poofTime;
     bool iFrames, iFramesPlayer;
 
     [SerializeField] Material flashMaterial;
@@ -20,7 +20,12 @@ public class Weapon : MonoBehaviour
                 enemy.hitPoints -= 1;
                 if (enemy.hitPoints <= 0)
                 {
-                    Destroy(enemy.gameObject);
+                    enemy.DropToken();
+                    foreach (MazeEnemy mazeEnemy in enemy.enemySet.GetComponentsInChildren<MazeEnemy>())
+                    {
+                        Destroy(mazeEnemy.gameObject);
+                    }
+                    return;
                 }
                 else
                 {
@@ -28,10 +33,7 @@ public class Weapon : MonoBehaviour
                     StartCoroutine(FlashEnemy(enemy.gameObject));
                 }
             }
-            else
-            {
-                enemy.TeleportHome();
-            }
+            StartCoroutine(PoofAllHome(enemy.GetComponent<MazeEnemy>()));
         }
         if (other.name == "Player" && gameObject.tag != "Player Weapon" && !iFramesPlayer)
         {
@@ -39,6 +41,37 @@ public class Weapon : MonoBehaviour
             StartCoroutine(FlashEnemy(other.gameObject));
             other.GetComponent<Player>().takeDamage();
         }
+    }
+    IEnumerator PoofAllHome(MazeEnemy data)
+    {
+        GameObject enemySet = data.enemySet;
+        GameObject[] enemies = new GameObject[enemySet.GetComponentsInChildren<MazeEnemy>().Length];
+        float poofTimer = poofTime; // Disappears and reappears after the specified seconds
+        int i = 0;
+        while (iFrames) // Wait until iframes are disabled before poofing
+        {
+            yield return null;
+        }
+        foreach (MazeEnemy enemy in enemySet.GetComponentsInChildren<MazeEnemy>()) // Gets each of the enemies in this enemy's set
+        {
+            enemies[i] = enemy.gameObject;
+            enemy.GetComponent<CharacterController>().enabled = false; //Must disable character controller to use transform to teleport
+            enemy.transform.localPosition = new Vector3(enemy.homePosition.x, enemy.homePosition.y, enemy.homePosition.z);
+            enemy.GetComponent<CharacterController>().enabled = true;
+            enemy.gameObject.SetActive(false);
+            i++;
+        }
+        while (poofTimer > 0)
+        {
+            poofTimer -= Time.deltaTime;
+            yield return null;
+        }
+        foreach (GameObject enemy in enemies) // Gets each of the enemies in this enemy's set
+        {
+            enemy.gameObject.SetActive(true);
+        }
+
+        data.ShuffleReal();
     }
 
     IEnumerator FlashEnemy(GameObject enemy)

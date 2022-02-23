@@ -3,13 +3,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] bool trueSight;
+    [SerializeField] float trueSightTime;
     [SerializeField] [Tooltip("Velocity per second")] float gravity = 20f, normalForce = 1f;
     [SerializeField] [Tooltip("Meters per second")] float moveSpeed;
     [SerializeField] [Range(0, 360)] [Tooltip("Max input degrees per second")] float rotSpeed;
     [SerializeField] [Range(0, 5)] [Tooltip("Max input zoom percentage per second")] float zoomSpeed;
     [SerializeField] int hitPointMax = 3;
 
-    float xRot, yRot, yPos, zPos, gravVelocity, zoomPercentage, runMultiplier;
+    float xRot, yRot, yPos, zPos, gravVelocity, zoomPercentage, runMultiplier, trueSightTimer;
 
     int hitPoints;
 
@@ -28,6 +30,7 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         hitPoints = hitPointMax;
         startPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        trueSightTimer = trueSightTime;
     }
 
     void Update()
@@ -38,6 +41,41 @@ public class Player : MonoBehaviour
         UpdateGravity(); // Gravity is added to player movement
 
         UpdateActions();
+        UpdateTrueSight();
+    }
+
+    void UpdateTrueSight()
+    {
+        if (trueSight)
+        {
+            if (trueSightTimer == trueSightTime) // activate once as countdown begins
+            {
+                foreach (GameObject falsePath in GameObject.FindGameObjectsWithTag("False Path"))
+                {
+                    falsePath.GetComponent<MeshRenderer>().enabled = true;
+                }
+                foreach (GameObject falseWall in GameObject.FindGameObjectsWithTag("False Wall"))
+                {
+                    falseWall.GetComponent<MeshRenderer>().enabled = false;
+                }
+            }
+
+            trueSightTimer -= Time.deltaTime; //Count down during true sight
+        }
+        if (trueSightTimer <= 0 && trueSight) //Return things to normal once the time is up
+        {
+            foreach (GameObject falsePath in GameObject.FindGameObjectsWithTag("False Path"))
+            {
+                falsePath.GetComponent<MeshRenderer>().enabled = false;
+            }
+            foreach (GameObject falseWall in GameObject.FindGameObjectsWithTag("False Wall"))
+            {
+                falseWall.GetComponent<MeshRenderer>().enabled = true;
+            }
+
+            trueSight = false; // truesight time is up so trueSight is off
+            trueSightTimer = trueSightTime; // reset timer for next time
+        }
     }
 
     // Mouse input on the X axis increases the object's rotation on its Y axis (rotSpeed is the maximum rotation in degrees per second)
@@ -85,6 +123,11 @@ public class Player : MonoBehaviour
         if (hit.collider.tag == "False Path")
         {
             StartCoroutine(FadeIn(hit.gameObject.GetComponent<MeshRenderer>()));
+        }
+        if (hit.collider.tag == "True Sight Token")
+        {
+            Destroy(hit.gameObject);
+            trueSight = true;
         }
     }
 

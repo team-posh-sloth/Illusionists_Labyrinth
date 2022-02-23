@@ -7,6 +7,8 @@ TagManager:
   - False Path
   - Enemy
   - Player Weapon
+  - False Wall
+  - True Sight Token
   layers:
   - Default
   - TransparentFX

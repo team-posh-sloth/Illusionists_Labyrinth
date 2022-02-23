@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MazeEnemy : MonoBehaviour
 {
+    public GameObject enemySet;
+    [SerializeField] GameObject tokenPrefab;
+
     public bool isReal;
 
     [SerializeField] float gravity = 20f, normalForce = 1f, moveSpeed = 7f, destinationOffset = 10f, homeOffset = 1f, homeRange = 20f;
@@ -56,6 +59,11 @@ public class MazeEnemy : MonoBehaviour
             followPlayer = false;
             returnHome = true;
         }
+    }
+
+    public void DropToken()
+    {
+        Instantiate(tokenPrefab, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z + 1), tokenPrefab.transform.rotation);
     }
 
     void FollowPlayer()
@@ -112,10 +120,25 @@ public class MazeEnemy : MonoBehaviour
         enemy.Move(moveSpeed * Time.deltaTime * moveDirection);
     }
 
-    public void TeleportHome()
+    public void ShuffleReal() // Redetermines which of the enemy set is real
     {
-        enemy.enabled = false;
-        gameObject.transform.localPosition = new Vector3(homePosition.x, homePosition.y, homePosition.z);
-        enemy.enabled = true;
+        int randomEnemy = Random.Range(0, enemySet.GetComponentsInChildren<MazeEnemy>().Length);
+
+        for (int n = 0; n < enemySet.GetComponentsInChildren<MazeEnemy>().Length; n++)
+        {
+            print("Should this one be real? Random Enemy is: " + randomEnemy);
+            if (n == randomEnemy)
+            {
+                print("Yes");
+                enemySet.GetComponentsInChildren<MazeEnemy>()[n].isReal = true;
+            }
+            else
+            {
+                print("No");
+                enemySet.GetComponentsInChildren<MazeEnemy>()[n].isReal = false;
+            }
+        }
+
     }
+
 }

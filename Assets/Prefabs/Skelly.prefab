@@ -125,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iTime: 0.7
   blinkTime: 0.1
+  poofTime: 0
   flashMaterial: {fileID: 2100000, guid: 1a299f59b35986845bff1db7fc85eef5, type: 2}
 --- !u!1 &521843952630912765
 GameObject:
@@ -1237,12 +1238,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f16268d8a3076904e86ecc91e335de74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySet: {fileID: 0}
+  tokenPrefab: {fileID: 2468361525538364301, guid: 85658685884fec44b8b715964863ea37, type: 3}
+  isReal: 0
   gravity: 20
   normalForce: 1
   moveSpeed: 4
   destinationOffset: 2
   homeOffset: 1
   homeRange: 20
+  hitPointMax: 3
+  hitPoints: 0
+  homePosition: {x: 0, y: 0, z: 0}
 --- !u!1 &4992694191853869660
 GameObject:
   m_ObjectHideFlags: 0
