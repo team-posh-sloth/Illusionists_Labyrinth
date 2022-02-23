@@ -37,6 +37,8 @@ sysinfo.txt
 *.unitypackage
 
 # CUSTOM IGNORES
+UserSettings/
+*.dwlt
 [Ll]ogs/
 *.log
 *.vsconfig
