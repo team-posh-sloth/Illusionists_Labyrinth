@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] bool trueSight;
+    public bool trueSight;
     [SerializeField] float trueSightTime;
     [SerializeField] [Tooltip("Velocity per second")] float gravity = 20f, normalForce = 1f;
     [SerializeField] [Tooltip("Meters per second")] float moveSpeed;
@@ -11,11 +11,14 @@ public class Player : MonoBehaviour
     [SerializeField] [Range(0, 5)] [Tooltip("Max input zoom percentage per second")] float zoomSpeed;
     [SerializeField] int hitPointMax = 3;
 
-    float xRot, yRot, yPos, zPos, gravVelocity, zoomPercentage, runMultiplier, trueSightTimer;
+    float xRot, yRot, yPos, zPos, gravVelocity, zoomPercentage, runMultiplier;
+    public float trueSightTimer;
 
     int hitPoints;
 
     Transform cam;
+
+    [SerializeField] GameObject trueSightLens;
     
     CharacterController character;
     Vector3 startPosition;
@@ -50,6 +53,7 @@ public class Player : MonoBehaviour
         {
             if (trueSightTimer == trueSightTime) // activate once as countdown begins
             {
+                trueSightLens.SetActive(false);
                 foreach (GameObject falsePath in GameObject.FindGameObjectsWithTag("False Path"))
                 {
                     falsePath.GetComponent<MeshRenderer>().enabled = true;
@@ -64,6 +68,7 @@ public class Player : MonoBehaviour
         }
         if (trueSightTimer <= 0 && trueSight) //Return things to normal once the time is up
         {
+            trueSightLens.SetActive(true);
             foreach (GameObject falsePath in GameObject.FindGameObjectsWithTag("False Path"))
             {
                 falsePath.GetComponent<MeshRenderer>().enabled = false;
