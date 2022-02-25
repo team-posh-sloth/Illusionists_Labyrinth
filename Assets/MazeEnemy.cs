@@ -126,15 +126,12 @@ public class MazeEnemy : MonoBehaviour
 
         for (int n = 0; n < enemySet.GetComponentsInChildren<MazeEnemy>().Length; n++)
         {
-            print("Should this one be real? Random Enemy is: " + randomEnemy);
             if (n == randomEnemy)
             {
-                print("Yes");
                 enemySet.GetComponentsInChildren<MazeEnemy>()[n].isReal = true;
             }
             else
             {
-                print("No");
                 enemySet.GetComponentsInChildren<MazeEnemy>()[n].isReal = false;
             }
         }

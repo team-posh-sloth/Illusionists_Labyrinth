@@ -33,7 +33,10 @@ public class Weapon : MonoBehaviour
                     StartCoroutine(FlashEnemy(enemy.gameObject));
                 }
             }
-            StartCoroutine(PoofAllHome(enemy.GetComponent<MazeEnemy>()));
+            if (enemy.enemySet.GetComponentsInChildren<MazeEnemy>().Length > 1)
+            {
+                StartCoroutine(PoofAllHome(enemy.GetComponent<MazeEnemy>()));
+            }
         }
         if (other.name == "Player" && gameObject.tag != "Player Weapon" && !iFramesPlayer)
         {
