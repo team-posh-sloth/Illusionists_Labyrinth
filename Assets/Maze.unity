@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -175,7 +175,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -9103484930961366303, guid: bf46ed57744a7084484ca02eb3aa1896, type: 3}
+  - {fileID: 2100000, guid: 22342598ef56dbd47a8660ed9cfa48c1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -285,7 +285,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: bf46ed57744a7084484ca02eb3aa1896, type: 3}
+  - {fileID: 2100000, guid: 0bb881021e632aa4f98a80f026a8484f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -543,6 +543,7 @@ GameObject:
   m_Component:
   - component: {fileID: 151710293}
   - component: {fileID: 151710294}
+  - component: {fileID: 151710295}
   m_Layer: 0
   m_Name: Angry
   m_TagString: Untagged
@@ -584,6 +585,26 @@ MonoBehaviour:
   textBubble: {fileID: 0}
   text:
   - You can't win
+--- !u!95 &151710295
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151710292}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: bf46ed57744a7084484ca02eb3aa1896, type: 3}
+  m_Controller: {fileID: 9100000, guid: 211c18c9bf664824088f0fb5c1efd887, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &158074698
 GameObject:
   m_ObjectHideFlags: 0
@@ -2111,6 +2132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 519046521}
   - component: {fileID: 519046522}
+  - component: {fileID: 519046523}
   m_Layer: 0
   m_Name: Angry
   m_TagString: Untagged
@@ -2152,6 +2174,26 @@ MonoBehaviour:
   textBubble: {fileID: 0}
   text:
   - You can't win
+--- !u!95 &519046523
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519046520}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: bf46ed57744a7084484ca02eb3aa1896, type: 3}
+  m_Controller: {fileID: 9100000, guid: 211c18c9bf664824088f0fb5c1efd887, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &527784628
 GameObject:
   m_ObjectHideFlags: 0
@@ -2924,7 +2966,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: bf46ed57744a7084484ca02eb3aa1896, type: 3}
+  - {fileID: 2100000, guid: 0bb881021e632aa4f98a80f026a8484f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3377,7 +3419,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -9103484930961366303, guid: bf46ed57744a7084484ca02eb3aa1896, type: 3}
+  - {fileID: 2100000, guid: 22342598ef56dbd47a8660ed9cfa48c1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3798,6 +3840,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1019721964}
   - component: {fileID: 1019721965}
+  - component: {fileID: 1019721966}
   m_Layer: 0
   m_Name: Angry
   m_TagString: Untagged
@@ -3839,6 +3882,26 @@ MonoBehaviour:
   textBubble: {fileID: 0}
   text:
   - You can't win
+--- !u!95 &1019721966
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019721963}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: bf46ed57744a7084484ca02eb3aa1896, type: 3}
+  m_Controller: {fileID: 9100000, guid: 211c18c9bf664824088f0fb5c1efd887, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &1024596832 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5244529609885436781, guid: ed2a8e160c86e08458ef0f37a22e916a, type: 3}
@@ -5558,6 +5621,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Itsyaboi (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3251124198383072069, guid: 15ac201d3354a8e43888752e46bc476e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 72770d32bf1dcd84b9fd4ff1e168da12, type: 2}
+    - target: {fileID: 5189301997427142027, guid: 15ac201d3354a8e43888752e46bc476e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2923f429763c83c44ab183a248453f78, type: 2}
     - target: {fileID: 5866666021909216657, guid: 15ac201d3354a8e43888752e46bc476e, type: 3}
       propertyPath: m_Controller
       value: 
@@ -5566,6 +5637,10 @@ PrefabInstance:
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6473049686638596857, guid: 15ac201d3354a8e43888752e46bc476e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 72770d32bf1dcd84b9fd4ff1e168da12, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15ac201d3354a8e43888752e46bc476e, type: 3}
 --- !u!1 &1494417213
@@ -6238,7 +6313,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: bf46ed57744a7084484ca02eb3aa1896, type: 3}
+  - {fileID: 2100000, guid: 0bb881021e632aa4f98a80f026a8484f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7220,6 +7295,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2037828721}
   - component: {fileID: 2037828722}
+  - component: {fileID: 2037828723}
   m_Layer: 0
   m_Name: YaBoi
   m_TagString: Untagged
@@ -7262,7 +7338,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -9103484930961366303, guid: bf46ed57744a7084484ca02eb3aa1896, type: 3}
+  - {fileID: 2100000, guid: 22342598ef56dbd47a8660ed9cfa48c1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7320,6 +7396,26 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.12070298, y: 0.9483142, z: 0.447935}
     m_Extent: {x: 2.6901565, y: 5.271312, z: 2.044932}
   m_DirtyAABB: 0
+--- !u!95 &2037828723
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037828720}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 211c18c9bf664824088f0fb5c1efd887, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2056880661
 GameObject:
   m_ObjectHideFlags: 0
@@ -7960,6 +8056,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543450652976833332}
   - component: {fileID: 919132148702853519}
+  - component: {fileID: 919132148702853520}
   m_Layer: 0
   m_Name: Angry
   m_TagString: Untagged
@@ -7982,6 +8079,26 @@ MonoBehaviour:
   textBubble: {fileID: 0}
   text:
   - You'll never escape
+--- !u!95 &919132148702853520
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148702853518}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: bf46ed57744a7084484ca02eb3aa1896, type: 3}
+  m_Controller: {fileID: 9100000, guid: 211c18c9bf664824088f0fb5c1efd887, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!65 &924920682413663558
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8015,7 +8132,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -9103484930961366303, guid: bf46ed57744a7084484ca02eb3aa1896, type: 3}
+  - {fileID: 2100000, guid: 22342598ef56dbd47a8660ed9cfa48c1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8908,7 +9025,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: bf46ed57744a7084484ca02eb3aa1896, type: 3}
+  - {fileID: 2100000, guid: 0bb881021e632aa4f98a80f026a8484f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
