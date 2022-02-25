@@ -127,7 +127,10 @@ public class Player : MonoBehaviour
     {
         if (hit.collider.tag == "False Path")
         {
-            StartCoroutine(FadeIn(hit.gameObject.GetComponent<MeshRenderer>()));
+            if (hit.collider.name != "TrueSightStop")
+            {
+                StartCoroutine(FadeIn(hit.gameObject.GetComponent<MeshRenderer>()));
+            }
         }
         if (hit.collider.tag == "True Sight Token")
         {

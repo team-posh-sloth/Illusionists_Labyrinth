@@ -17,7 +17,10 @@ public class Weapon : MonoBehaviour
         {
             if (enemy.isReal)
             {
-                enemy.hitPoints -= 1;
+                foreach (MazeEnemy mazeEnemy in enemy.enemySet.GetComponentsInChildren<MazeEnemy>())
+                {
+                    mazeEnemy.hitPoints -= 1;
+                }
                 if (enemy.hitPoints <= 0)
                 {
                     enemy.DropToken();
