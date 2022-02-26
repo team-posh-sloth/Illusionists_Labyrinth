@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5017597, g: 0.2702812, b: 0.21009693, a: 1}
+  m_IndirectSpecularColor: {r: 0.45890963, g: 0.25205973, b: 0.20353779, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1052,6 +1052,10 @@ PrefabInstance:
       propertyPath: enemySet
       value: 
       objectReference: {fileID: 1102383001}
+    - target: {fileID: 2261909468740710467, guid: ed2a8e160c86e08458ef0f37a22e916a, type: 3}
+      propertyPath: hitPointMax
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4864907154639622615, guid: ed2a8e160c86e08458ef0f37a22e916a, type: 3}
       propertyPath: m_Name
       value: Skelly (1)
@@ -4107,7 +4111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textBubble: {fileID: 1725572695}
   text:
-  - There's nowhere to go
+  - A dead end is a new beginning
 --- !u!135 &897316263
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4865,6 +4869,10 @@ PrefabInstance:
       propertyPath: enemySet
       value: 
       objectReference: {fileID: 1102383001}
+    - target: {fileID: 2261909468740710467, guid: ed2a8e160c86e08458ef0f37a22e916a, type: 3}
+      propertyPath: hitPointMax
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4864907154639622615, guid: ed2a8e160c86e08458ef0f37a22e916a, type: 3}
       propertyPath: m_Name
       value: Skelly (2)
@@ -5269,7 +5277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textBubble: {fileID: 1221597612}
   text:
-  - You can't win
+  - The only way to find the truth is to face it head-on
 --- !u!135 &1234668783
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -7934,6 +7942,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2261909468740710467, guid: ed2a8e160c86e08458ef0f37a22e916a, type: 3}
+      propertyPath: hitPointMax
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4864907154639622615, guid: ed2a8e160c86e08458ef0f37a22e916a, type: 3}
       propertyPath: m_Name
       value: Skelly
@@ -8425,7 +8437,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textBubble: {fileID: 1793540044}
   text:
-  - Nothing is real
+  - 'One truth and two lies
+
+    With the truth the key resides'
 --- !u!135 &2071532837
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -10816,7 +10830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textBubble: {fileID: 4965435884609233374}
   text:
-  - You'll never escape
+  - Things are not always what they appear
 --- !u!4 &4965435884609233372
 Transform:
   m_ObjectHideFlags: 0

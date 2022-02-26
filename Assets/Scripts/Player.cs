@@ -75,7 +75,10 @@ public class Player : MonoBehaviour
             }
             foreach (GameObject falseWall in GameObject.FindGameObjectsWithTag("False Wall"))
             {
-                falseWall.GetComponent<MeshRenderer>().enabled = true;
+                if (falseWall.name != "TrueSightStop")
+                {
+                    falseWall.GetComponent<MeshRenderer>().enabled = true;
+                }
             }
 
             trueSight = false; // truesight time is up so trueSight is off
@@ -127,10 +130,7 @@ public class Player : MonoBehaviour
     {
         if (hit.collider.tag == "False Path")
         {
-            if (hit.collider.name != "TrueSightStop")
-            {
-                StartCoroutine(FadeIn(hit.gameObject.GetComponent<MeshRenderer>()));
-            }
+            StartCoroutine(FadeIn(hit.gameObject.GetComponent<MeshRenderer>()));
         }
         if (hit.collider.tag == "True Sight Token")
         {
