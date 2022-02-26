@@ -9,6 +9,7 @@ TagManager:
   - Player Weapon
   - False Wall
   - True Sight Token
+  - Illusionist
   layers:
   - Default
   - TransparentFX

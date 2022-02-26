@@ -4,6 +4,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public bool trueSight;
+    [SerializeField] GameObject dispellEffect;
     [SerializeField] float trueSightTime;
     [SerializeField] [Tooltip("Velocity per second")] float gravity = 20f, normalForce = 1f;
     [SerializeField] [Tooltip("Meters per second")] float moveSpeed;
@@ -145,6 +146,12 @@ public class Player : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
+        if (hit.collider.tag == "Illusionist")
+        {
+            GameObject particleEffect = Instantiate(dispellEffect, new Vector3(hit.transform.localPosition.x, hit.transform.localPosition.y, hit.transform.localPosition.z), hit.transform.localRotation);
+            particleEffect.GetComponent<ParticleSystem>().Play();
+            hit.gameObject.SetActive(false);
+        }
         if (hit.collider.tag == "False Path")
         {
             StartCoroutine(FadeIn(hit.gameObject.GetComponent<MeshRenderer>()));
@@ -155,7 +162,6 @@ public class Player : MonoBehaviour
             trueSight = true;
         }
     }
-
     IEnumerator FadeIn(MeshRenderer mesh)
     {
         if (!mesh.enabled)
