@@ -425,6 +425,8 @@ GameObject:
   - component: {fileID: 2175639357884147855}
   - component: {fileID: 2175639357884147843}
   - component: {fileID: 3672837652454539021}
+  - component: {fileID: 69718946207619604}
+  - component: {fileID: 3211242263212929668}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Untagged
@@ -559,6 +561,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &69718946207619604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2175639357884147848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"declarations":{"collection":{"$content":[],"$version":"A"},"$version":"A"}}'
+    _objectReferences: []
+--- !u!114 &3211242263212929668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2175639357884147848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2fe5546f775c47d2820aa5e8a715f53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"nest":{"source":"Embed","macro":null,"embed":{"variables":{"collection":{"$content":[],"$version":"A"},"$version":"A"},"controlInputDefinitions":[],"controlOutputDefinitions":[],"valueInputDefinitions":[],"valueOutputDefinitions":[],"title":null,"summary":null,"pan":{"x":0.0,"y":0.0},"zoom":1.0,"elements":[{"coroutine":false,"defaultValues":{},"position":{"x":-406.0,"y":-160.0},"guid":"db28283e-c95b-4760-8359-2f56f6db4500","$version":"A","$type":"Unity.VisualScripting.Start"},{"coroutine":false,"defaultValues":{},"position":{"x":-204.0,"y":60.0},"guid":"c226f84b-68d8-4db6-9cb6-2c572649c0c1","$version":"A","$type":"Unity.VisualScripting.Update"},{"coroutine":false,"defaultValues":{"key":{"$content":"W","$type":"UnityEngine.KeyCode"},"action":{"$content":"Down","$type":"Unity.VisualScripting.PressState"}},"position":{"x":-233.0,"y":-107.0},"guid":"a5db4d9f-a8e4-4429-ad51-81f193acabff","$version":"A","$type":"Unity.VisualScripting.OnKeyboardInput"},{"chainable":false,"member":{"name":"GetBool","parameterTypes":["System.String"],"targetType":"UnityEngine.Animator","targetTypeName":"UnityEngine.Animator","$version":"A"},"defaultValues":{"target":null,"%name":{"$content":"","$type":"System.String"}},"position":{"x":-22.0,"y":-106.0},"guid":"251ab576-0b03-43b8-b9e4-0c1bc030fda8","$version":"A","$type":"Unity.VisualScripting.InvokeMember"}],"$version":"A"}}}'
+    _objectReferences: []
 --- !u!1 &2175639358213314762
 GameObject:
   m_ObjectHideFlags: 0
