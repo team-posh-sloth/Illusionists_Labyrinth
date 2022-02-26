@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     Vector3 startPosition;
 
     Animator anim;
+    AudioSource audio;
 
     void Start()
     {
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour
         hitPoints = hitPointMax;
         startPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         trueSightTimer = trueSightTime;
+        audio = gameObject.GetComponent<AudioSource>();
     }
 
     void Update()
@@ -46,8 +48,16 @@ public class Player : MonoBehaviour
 
         UpdateActions();
         UpdateTrueSight();
+        UpdateAudio();
     }
 
+    void UpdateAudio()
+    {
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("walk") && !audio.isPlaying)
+        {
+            audio.Play();
+        }
+    }
     void UpdateTrueSight()
     {
         if (trueSight)
