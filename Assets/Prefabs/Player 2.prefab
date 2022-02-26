@@ -1668,6 +1668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trueSight: 0
+  dispellEffect: {fileID: 6479610597298894101, guid: dbc8df260cff81a43a1cf5a2d620642e, type: 3}
   trueSightTime: 10
   gravity: 20
   normalForce: 1

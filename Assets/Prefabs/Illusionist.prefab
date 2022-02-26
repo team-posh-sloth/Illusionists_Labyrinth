@@ -862,7 +862,7 @@ GameObject:
   - component: {fileID: 4685752061608806263}
   m_Layer: 0
   m_Name: Illusionist
-  m_TagString: Untagged
+  m_TagString: Illusionist
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
