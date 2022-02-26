@@ -36,6 +36,10 @@ public class Weapon : MonoBehaviour
                     StartCoroutine(FlashEnemy(enemy.gameObject));
                 }
             }
+            else
+            {
+                enemy.isPoof = true;
+            }
             if (enemy.enemySet.GetComponentsInChildren<MazeEnemy>().Length > 1)
             {
                 StartCoroutine(PoofAllHome(enemy.GetComponent<MazeEnemy>()));
@@ -74,7 +78,10 @@ public class Weapon : MonoBehaviour
         }
         foreach (GameObject enemy in enemies) // Gets each of the enemies in this enemy's set
         {
-            enemy.gameObject.SetActive(true);
+            if (!enemy.GetComponent<MazeEnemy>().isPoof)
+            {
+                enemy.gameObject.SetActive(true);
+            }
         }
 
         data.ShuffleReal();

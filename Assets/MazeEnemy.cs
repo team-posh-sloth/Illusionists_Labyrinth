@@ -7,7 +7,7 @@ public class MazeEnemy : MonoBehaviour
     public GameObject enemySet;
     [SerializeField] GameObject tokenPrefab;
 
-    public bool isReal;
+    public bool isReal, isPoof;
 
     [SerializeField] float gravity = 20f, normalForce = 1f, moveSpeed = 7f, destinationOffset = 10f, homeOffset = 1f, homeRange = 20f;
 
