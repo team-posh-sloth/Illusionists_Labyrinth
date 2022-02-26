@@ -126,7 +126,7 @@ MonoBehaviour:
   iTime: 0.7
   blinkTime: 0.1
   poofTime: 0
-  flashMaterial: {fileID: 2100000, guid: 1a299f59b35986845bff1db7fc85eef5, type: 2}
+  flashMaterial: {fileID: 2100000, guid: a6cac2da898c9ca4c801ae0f0df12e17, type: 2}
 --- !u!1 &521843952630912765
 GameObject:
   m_ObjectHideFlags: 0

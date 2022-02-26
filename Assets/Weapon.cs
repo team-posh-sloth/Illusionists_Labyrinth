@@ -41,7 +41,7 @@ public class Weapon : MonoBehaviour
                 StartCoroutine(PoofAllHome(enemy.GetComponent<MazeEnemy>()));
             }
         }
-        if (other.name == "Player" && gameObject.tag != "Player Weapon" && !iFramesPlayer)
+        if (other.name == "Player" && gameObject.tag != "Player Weapon" && !iFramesPlayer && !other.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("block"))
         {
             iFramesPlayer = true;
             StartCoroutine(FlashEnemy(other.gameObject));
