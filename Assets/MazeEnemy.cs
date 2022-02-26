@@ -64,7 +64,7 @@ public class MazeEnemy : MonoBehaviour
 
     public void DropToken()
     {
-        Instantiate(tokenPrefab, new Vector3(transform.localPosition.x - 2, transform.localPosition.y + 1, transform.localPosition.z), tokenPrefab.transform.localRotation);
+        Instantiate(tokenPrefab, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), tokenPrefab.transform.rotation);
     }
 
     void FollowPlayer()
