@@ -12,6 +12,13 @@ public class Weapon : MonoBehaviour
     Renderer[] renderersToFlash;
     Material[] ogMaterials;
 
+    AudioSource audio;
+    Player player;
+    private void Start()
+    {
+        audio = GameObject.Find("Player").GetComponent<AudioSource>();
+        player = GameObject.Find("Player").GetComponent<Player>();
+    }
     void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out MazeEnemy enemy) && gameObject.tag == "Player Weapon" && !iFrames)
@@ -40,6 +47,10 @@ public class Weapon : MonoBehaviour
             else
             {
                 enemy.isPoof = true;
+                audio.volume = 5;
+                audio.pitch = 1;
+                audio.clip = player.poofSound;
+                audio.Play();
             }
             if (enemy.enemySet.GetComponentsInChildren<MazeEnemy>().Length > 1)
             {
@@ -48,12 +59,13 @@ public class Weapon : MonoBehaviour
         }
         if (other.name == "Player" && gameObject.tag != "Player Weapon" && !iFramesPlayer)
         {
-            AudioSource audio = other.GetComponent<AudioSource>();
             if (other.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("block"))
             {
                 if (audio.isPlaying) { audio.Stop(); }
-                audio.volume = 0.5f;
-                audio.PlayOneShot(other.GetComponent<Player>().shieldSound);
+                audio.volume = 0.1f;
+                audio.pitch = 1;
+                audio.clip = player.shieldSound;
+                audio.Play();
             }
             else
             {
@@ -78,7 +90,7 @@ public class Weapon : MonoBehaviour
             enemies[i] = enemy.gameObject;
             if (enemy.isPoof)
             {
-                GameObject particleEffect = Instantiate(dispellEffect, new Vector3(enemy.transform.localPosition.x - 2, enemy.transform.localPosition.y + 2, enemy.transform.localPosition.z), enemy.transform.localRotation);
+                GameObject particleEffect = Instantiate(dispellEffect, new Vector3(enemy.transform.localPosition.x - 1, enemy.transform.localPosition.y + 2, enemy.transform.localPosition.z), enemy.transform.localRotation);
                 particleEffect.GetComponent<ParticleSystem>().Play();
                 enemy.gameObject.SetActive(false);
             }

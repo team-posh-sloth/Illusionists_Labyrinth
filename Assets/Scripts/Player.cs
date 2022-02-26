@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     public AudioClip damagedSound;
     public AudioClip weaponSound;
     public AudioClip shieldSound;
+    public AudioClip wallAppearingSound;
+    public AudioClip poofSound;
 
 
     public bool trueSight;
@@ -159,7 +161,7 @@ public class Player : MonoBehaviour
             }
             if (!audio.isPlaying)
             {
-                audio.volume = 1;
+                audio.volume = 0.5f;
                 audio.pitch = 1.2f;
                 audio.PlayDelayed(0.35f);
             }
@@ -181,6 +183,10 @@ public class Player : MonoBehaviour
             GameObject particleEffect = Instantiate(dispellEffect, new Vector3(hit.transform.localPosition.x, hit.transform.localPosition.y, hit.transform.localPosition.z), hit.transform.localRotation);
             particleEffect.GetComponent<ParticleSystem>().Play();
             hit.gameObject.SetActive(false);
+            audio.volume = 5;
+            audio.pitch = 1;
+            audio.clip = poofSound;
+            audio.Play();
         }
         if (hit.collider.tag == "False Path")
         {
@@ -188,6 +194,10 @@ public class Player : MonoBehaviour
         }
         if (hit.collider.tag == "True Sight Token")
         {
+            audio.volume = 5f;
+            audio.pitch = 1;
+            audio.clip = poofSound;
+            audio.Play();
             Destroy(hit.gameObject);
             trueSight = true;
         }
@@ -196,6 +206,9 @@ public class Player : MonoBehaviour
     {
         if (!mesh.enabled)
         {
+            audio.volume = 2f;
+            audio.clip = wallAppearingSound;
+            audio.Play();
             mesh.enabled = true;
 
             // Set mesh to transparent (see Unity Documentation "Changing the Rendering Mode using a Script")

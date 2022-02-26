@@ -1673,6 +1673,8 @@ MonoBehaviour:
   damagedSound: {fileID: 0}
   weaponSound: {fileID: 8300000, guid: c6513af9494ee6245be757991ed356c4, type: 3}
   shieldSound: {fileID: 8300000, guid: 5ec8decdd75101845be2c01a55d5540a, type: 3}
+  wallAppearingSound: {fileID: 8300000, guid: 49a7ca39a0493f24db849589759d2b7b, type: 3}
+  poofSound: {fileID: 8300000, guid: 3491b32d260a87d47871b30dd7d6200d, type: 3}
   trueSight: 0
   dispellEffect: {fileID: 6479610597298894101, guid: dbc8df260cff81a43a1cf5a2d620642e, type: 3}
   trueSightTime: 10
@@ -1684,6 +1686,8 @@ MonoBehaviour:
   hitPointMax: 3
   trueSightTimer: 0
   trueSightLens: {fileID: 3013358952726303}
+  anim: {fileID: 0}
+  audio: {fileID: 0}
 --- !u!95 &5403919317746462903
 Animator:
   serializedVersion: 4
