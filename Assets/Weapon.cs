@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    [SerializeField] GameObject dispellEffect;
     [SerializeField] float iTime, blinkTime, poofTime;
     bool iFrames, iFramesPlayer;
 
@@ -65,10 +66,19 @@ public class Weapon : MonoBehaviour
         foreach (MazeEnemy enemy in enemySet.GetComponentsInChildren<MazeEnemy>()) // Gets each of the enemies in this enemy's set
         {
             enemies[i] = enemy.gameObject;
-            enemy.GetComponent<CharacterController>().enabled = false; //Must disable character controller to use transform to teleport
-            enemy.transform.localPosition = new Vector3(enemy.homePosition.x, enemy.homePosition.y, enemy.homePosition.z);
-            enemy.GetComponent<CharacterController>().enabled = true;
-            enemy.gameObject.SetActive(false);
+            if (enemy.isPoof)
+            {
+                GameObject particleEffect = Instantiate(dispellEffect, new Vector3(enemy.transform.localPosition.x - 2, enemy.transform.localPosition.y + 2, enemy.transform.localPosition.z), enemy.transform.localRotation);
+                particleEffect.GetComponent<ParticleSystem>().Play();
+                enemy.gameObject.SetActive(false);
+            }
+            else
+            {
+                enemy.GetComponent<CharacterController>().enabled = false; //Must disable character controller to use transform to teleport
+                enemy.transform.localPosition = new Vector3(enemy.homePosition.x, enemy.homePosition.y, enemy.homePosition.z);
+                enemy.GetComponent<CharacterController>().enabled = true;
+                enemy.gameObject.SetActive(false);
+            }
             i++;
         }
         while (poofTimer > 0)

@@ -6,6 +6,7 @@ public class MazeEnemy : MonoBehaviour
 {
     public GameObject enemySet;
     [SerializeField] GameObject tokenPrefab;
+    [SerializeField] GameObject dispellEffect;
 
     public bool isReal, isPoof;
 
