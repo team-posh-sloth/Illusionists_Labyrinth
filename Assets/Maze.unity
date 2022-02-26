@@ -9611,9 +9611,10 @@ GameObject:
   - component: {fileID: 897316264}
   - component: {fileID: 897316263}
   - component: {fileID: 897316262}
+  - component: {fileID: 897316265}
   m_Layer: 0
   m_Name: Illusionist
-  m_TagString: Untagged
+  m_TagString: Illusionist
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9663,6 +9664,24 @@ Transform:
   m_Father: {fileID: 690035951}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!143 &897316265
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897316261}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &918786811
 GameObject:
   m_ObjectHideFlags: 0
@@ -12896,9 +12915,10 @@ GameObject:
   - component: {fileID: 1234668781}
   - component: {fileID: 1234668783}
   - component: {fileID: 1234668782}
+  - component: {fileID: 1234668784}
   m_Layer: 0
   m_Name: Illusionist
-  m_TagString: Untagged
+  m_TagString: Illusionist
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12948,6 +12968,24 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 6
   m_Center: {x: 0, y: -2.6, z: 2.5}
+--- !u!143 &1234668784
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234668780}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1245372553
 GameObject:
   m_ObjectHideFlags: 0
@@ -20929,9 +20967,10 @@ GameObject:
   - component: {fileID: 2071532835}
   - component: {fileID: 2071532837}
   - component: {fileID: 2071532836}
+  - component: {fileID: 2071532838}
   m_Layer: 0
   m_Name: Illusionist
-  m_TagString: Untagged
+  m_TagString: Illusionist
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20983,6 +21022,24 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 5
   m_Center: {x: 0, y: -2.6, z: 4}
+--- !u!143 &2071532838
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071532834}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2075061532
 GameObject:
   m_ObjectHideFlags: 0
@@ -22500,6 +22557,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Illusionist
       objectReference: {fileID: 0}
+    - target: {fileID: 4685752061608806249, guid: bdeab198942eb2343a1cb9074d23f25b, type: 3}
+      propertyPath: m_TagString
+      value: Illusionist
+      objectReference: {fileID: 0}
     - target: {fileID: 4685752061608806262, guid: bdeab198942eb2343a1cb9074d23f25b, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -22546,6 +22607,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdeab198942eb2343a1cb9074d23f25b, type: 3}
+--- !u!1 &427814534912969513 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4685752061608806249, guid: bdeab198942eb2343a1cb9074d23f25b, type: 3}
+  m_PrefabInstance: {fileID: 427814534912969512}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &444911367707192538
 Transform:
   m_ObjectHideFlags: 0
@@ -23832,6 +23898,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4685752061608806262, guid: bdeab198942eb2343a1cb9074d23f25b, type: 3}
   m_PrefabInstance: {fileID: 427814534912969512}
   m_PrefabAsset: {fileID: 0}
+--- !u!143 &4965435884565679199
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427814534912969513}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4965435884565679200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427814534912969513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4e4d05ce2c2650418013621360a1128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5051542400791317861
 Transform:
   m_ObjectHideFlags: 0
