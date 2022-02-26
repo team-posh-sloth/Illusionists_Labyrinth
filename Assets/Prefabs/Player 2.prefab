@@ -1668,6 +1668,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63e907abb9470a54a8a2b21dbd8d4769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  walkingSound: {fileID: 8300000, guid: 42f452f50c7cdd047ba3ea2dcf51fce8, type: 3}
+  runningSound: {fileID: 0}
+  damagedSound: {fileID: 0}
+  weaponSound: {fileID: 8300000, guid: c6513af9494ee6245be757991ed356c4, type: 3}
+  shieldSound: {fileID: 8300000, guid: 5ec8decdd75101845be2c01a55d5540a, type: 3}
   trueSight: 0
   dispellEffect: {fileID: 6479610597298894101, guid: dbc8df260cff81a43a1cf5a2d620642e, type: 3}
   trueSightTime: 10

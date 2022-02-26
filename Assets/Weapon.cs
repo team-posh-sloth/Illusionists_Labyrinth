@@ -46,11 +46,21 @@ public class Weapon : MonoBehaviour
                 StartCoroutine(PoofAllHome(enemy.GetComponent<MazeEnemy>()));
             }
         }
-        if (other.name == "Player" && gameObject.tag != "Player Weapon" && !iFramesPlayer && !other.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("block"))
+        if (other.name == "Player" && gameObject.tag != "Player Weapon" && !iFramesPlayer)
         {
-            iFramesPlayer = true;
-            StartCoroutine(FlashEnemy(other.gameObject));
-            other.GetComponent<Player>().takeDamage();
+            AudioSource audio = other.GetComponent<AudioSource>();
+            if (other.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("block"))
+            {
+                if (audio.isPlaying) { audio.Stop(); }
+                audio.volume = 0.5f;
+                audio.PlayOneShot(other.GetComponent<Player>().shieldSound);
+            }
+            else
+            {
+                iFramesPlayer = true;
+                StartCoroutine(FlashEnemy(other.gameObject));
+                other.GetComponent<Player>().takeDamage();
+            }
         }
     }
     IEnumerator PoofAllHome(MazeEnemy data)

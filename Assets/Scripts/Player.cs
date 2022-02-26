@@ -3,6 +3,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public AudioClip walkingSound;
+    public AudioClip runningSound;
+    public AudioClip damagedSound;
+    public AudioClip weaponSound;
+    public AudioClip shieldSound;
+
+
     public bool trueSight;
     [SerializeField] GameObject dispellEffect;
     [SerializeField] float trueSightTime;
@@ -24,8 +31,8 @@ public class Player : MonoBehaviour
     CharacterController character;
     Vector3 startPosition;
 
-    Animator anim;
-    AudioSource audio;
+    public Animator anim;
+    public AudioSource audio;
 
     void Start()
     {
@@ -53,9 +60,9 @@ public class Player : MonoBehaviour
 
     void UpdateAudio()
     {
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("walk") && !audio.isPlaying)
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("walking"))
         {
-            audio.Play();
+            audio.Stop();
         }
     }
     void UpdateTrueSight()
@@ -116,17 +123,17 @@ public class Player : MonoBehaviour
         //}
         //else
         //{
-            if (Input.GetKey(KeyCode.W)) { anim.SetBool("Is walking", true); } else { anim.SetBool("Is walking", false); }
-            if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W))
-            {
-                anim.SetBool("Is running", true);
-                runMultiplier = 2; // Player moves twice as fast holding shift
-            }
-            else
-            {
-                anim.SetBool("Is running", false);
-                runMultiplier = 1;
-            }
+        if (Input.GetKey(KeyCode.W)) { anim.SetBool("Is walking", true); } else { anim.SetBool("Is walking", false); }
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W))
+        {
+            anim.SetBool("Is running", true);
+            runMultiplier = 2; // Player moves twice as fast holding shift
+        }
+        else
+        {
+            anim.SetBool("Is running", false);
+            runMultiplier = 1;
+        }
         //}
         character.Move(moveSpeed * runMultiplier * Time.deltaTime * (transform.forward * Input.GetAxisRaw("Vertical") + transform.right * Input.GetAxisRaw("Horizontal")).normalized);
     }
@@ -142,7 +149,20 @@ public class Player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            //if (!anim.GetCurrentAnimatorStateInfo(0).IsName("attack"))
+            //{
+            //}
             anim.Play("attack");
+            if (audio.clip != weaponSound)
+            {
+                audio.clip = weaponSound;
+            }
+            if (!audio.isPlaying)
+            {
+                audio.volume = 1;
+                audio.pitch = 1.2f;
+                audio.PlayDelayed(0.35f);
+            }
         }
         if (Input.GetMouseButton(1))
         {
