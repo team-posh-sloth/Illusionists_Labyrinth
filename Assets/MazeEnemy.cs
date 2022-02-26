@@ -31,7 +31,7 @@ public class MazeEnemy : MonoBehaviour
     {
         enemy = GetComponent<CharacterController>();
         moveDirection = new Vector3();
-        homePosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        homePosition = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z);
         anim = GetComponent<Animator>();
         hitPoints = hitPointMax;
     }
@@ -63,7 +63,7 @@ public class MazeEnemy : MonoBehaviour
 
     public void DropToken()
     {
-        Instantiate(tokenPrefab, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z + 1), tokenPrefab.transform.rotation);
+        Instantiate(tokenPrefab, new Vector3(transform.localPosition.x - 2, transform.localPosition.y + 1, transform.localPosition.z), tokenPrefab.transform.localRotation);
     }
 
     void FollowPlayer()
