@@ -99,12 +99,12 @@ public class Player : MonoBehaviour
 
     // XZ axis input (i.e. WASD) creates a vector on the XZ plane (forward and right) with a magnitude of units (moveSpeed) per second (deltaTime)
     void UpdateXZMovement() {
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("attack") || anim.GetCurrentAnimatorStateInfo(0).IsName("block"))
-        {
-            runMultiplier = 0;
-        }
-        else
-        {
+        //if (anim.GetCurrentAnimatorStateInfo(0).IsName("attack") || anim.GetCurrentAnimatorStateInfo(0).IsName("block"))
+        //{
+        //    runMultiplier = 0;
+        //}
+        //else
+        //{
             if (Input.GetKey(KeyCode.W)) { anim.SetBool("Is walking", true); } else { anim.SetBool("Is walking", false); }
             if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W))
             {
@@ -116,7 +116,7 @@ public class Player : MonoBehaviour
                 anim.SetBool("Is running", false);
                 runMultiplier = 1;
             }
-        }
+        //}
         character.Move(moveSpeed * runMultiplier * Time.deltaTime * (transform.forward * Input.GetAxisRaw("Vertical") + transform.right * Input.GetAxisRaw("Horizontal")).normalized);
     }
 

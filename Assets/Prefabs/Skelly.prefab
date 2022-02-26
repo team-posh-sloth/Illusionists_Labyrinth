@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: add6f5f7c2e19de40ade7d972a5730d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dispellEffect: {fileID: 0}
   iTime: 0.7
   blinkTime: 0.1
   poofTime: 0
@@ -1240,10 +1241,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySet: {fileID: 0}
   tokenPrefab: {fileID: 2468361525538364301, guid: 85658685884fec44b8b715964863ea37, type: 3}
+  dispellEffect: {fileID: 6479610597298894101, guid: dbc8df260cff81a43a1cf5a2d620642e, type: 3}
   isReal: 0
+  isPoof: 0
   gravity: 20
   normalForce: 1
-  moveSpeed: 4
+  moveSpeed: 3
   destinationOffset: 2
   homeOffset: 1
   homeRange: 20
