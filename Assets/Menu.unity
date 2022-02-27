@@ -2051,7 +2051,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4965435885364617961, guid: bf1cc1a2f0160e84f8a14bbebb7413ed, type: 3}
       propertyPath: text.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4965435885364617961, guid: bf1cc1a2f0160e84f8a14bbebb7413ed, type: 3}
       propertyPath: text.Array.data[0]
@@ -2075,7 +2075,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4965435885364617961, guid: bf1cc1a2f0160e84f8a14bbebb7413ed, type: 3}
       propertyPath: text.Array.data[2]
-      value: 'Programing- Michael Kellett
+      value: 'Programming - Michael Kellett
 
 
 
@@ -2096,6 +2096,14 @@ PrefabInstance:
 
 
         @Runestomper'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4965435885364617961, guid: bf1cc1a2f0160e84f8a14bbebb7413ed, type: 3}
+      propertyPath: text.Array.data[5]
+      value: 'Foley Artist- Kaden Evans
+
+
+
+        @SonOfOdin'
       objectReference: {fileID: 0}
     - target: {fileID: 4965435886450050859, guid: bf1cc1a2f0160e84f8a14bbebb7413ed, type: 3}
       propertyPath: m_Name
