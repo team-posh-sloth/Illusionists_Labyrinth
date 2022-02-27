@@ -107,7 +107,13 @@ public class Player : MonoBehaviour
     }
 
     // Mouse input on the X axis increases the object's rotation on its Y axis (rotSpeed is the maximum rotation in degrees per second)
-    void UpdateRotation() { yRot += Input.GetAxis("Mouse X") * Time.deltaTime * rotSpeed; transform.eulerAngles = new Vector3(0, yRot); }
+    void UpdateRotation()
+    {
+        if (Input.GetAxis("Mouse X") > 0.1f || Input.GetAxis("Mouse X") < -0.1f)
+        {
+            yRot += Input.GetAxis("Mouse X") * Time.deltaTime * rotSpeed; transform.eulerAngles = new Vector3(0, yRot);
+        }
+    }
 
     // Mouse input on the Y axis interpolates both the position and angle of the camera behind the player (zoomSpeed is zoom percentage per second)
     void UpdateZoom() 
