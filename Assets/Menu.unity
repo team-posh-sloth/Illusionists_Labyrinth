@@ -983,6 +983,41 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdeab198942eb2343a1cb9074d23f25b, type: 3}
+--- !u!1 &1132450798 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4685752061608806249, guid: bdeab198942eb2343a1cb9074d23f25b, type: 3}
+  m_PrefabInstance: {fileID: 1132450797}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1132450799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132450798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4e4d05ce2c2650418013621360a1128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!143 &1132450803
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132450798}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1178626049
 GameObject:
   m_ObjectHideFlags: 0
@@ -1172,7 +1207,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 847c6fa128ded8d46a8472da0e801105, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.714
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1649,31 +1684,52 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4965435885364617961, guid: bf1cc1a2f0160e84f8a14bbebb7413ed, type: 3}
+      propertyPath: text.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4965435885364617961, guid: bf1cc1a2f0160e84f8a14bbebb7413ed, type: 3}
       propertyPath: text.Array.data[0]
       value: 'Welcome to
 
         The Illusionist''s Labyrinth
 
-        Created by
-        the team at Posh Sloth'
+
+        (Press E)'
       objectReference: {fileID: 0}
     - target: {fileID: 4965435885364617961, guid: bf1cc1a2f0160e84f8a14bbebb7413ed, type: 3}
       propertyPath: text.Array.data[1]
-      value: 'Programing- Micheal Kellet
+      value: '
 
-        @Spellmender
+        Created by the team at
+
+        Posh Sloth
+
 
 '
       objectReference: {fileID: 0}
     - target: {fileID: 4965435885364617961, guid: bf1cc1a2f0160e84f8a14bbebb7413ed, type: 3}
       propertyPath: text.Array.data[2]
+      value: 'Programing- Michael Kellett
+
+
+
+        @Spellmender'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4965435885364617961, guid: bf1cc1a2f0160e84f8a14bbebb7413ed, type: 3}
+      propertyPath: text.Array.data[3]
       value: 'Art- Ammron Phillips
+
+
 
         @5hadowduck'
       objectReference: {fileID: 0}
     - target: {fileID: 4965435885364617961, guid: bf1cc1a2f0160e84f8a14bbebb7413ed, type: 3}
-      propertyPath: text.Array.data[3]
-      value: "Music- Chris Herrera \n@Runestomper"
+      propertyPath: text.Array.data[4]
+      value: 'Music- Chris Herrera
+
+
+
+        @Runestomper'
       objectReference: {fileID: 0}
     - target: {fileID: 4965435886450050859, guid: bf1cc1a2f0160e84f8a14bbebb7413ed, type: 3}
       propertyPath: m_Name
