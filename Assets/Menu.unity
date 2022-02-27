@@ -2064,14 +2064,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4965435885364617961, guid: bf1cc1a2f0160e84f8a14bbebb7413ed, type: 3}
       propertyPath: text.Array.data[1]
-      value: '
+      value: 'Created by
 
-        Created by the team at
-
-        Posh Sloth
+        the team at
 
 
-'
+        Posh Sloth'
       objectReference: {fileID: 0}
     - target: {fileID: 4965435885364617961, guid: bf1cc1a2f0160e84f8a14bbebb7413ed, type: 3}
       propertyPath: text.Array.data[2]
