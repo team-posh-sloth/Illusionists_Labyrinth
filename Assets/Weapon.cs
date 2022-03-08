@@ -90,7 +90,7 @@ public class Weapon : MonoBehaviour
             enemies[i] = enemy.gameObject;
             if (enemy.isPoof)
             {
-                GameObject particleEffect = Instantiate(dispellEffect, new Vector3(enemy.transform.localPosition.x - 1, enemy.transform.localPosition.y + 2, enemy.transform.localPosition.z), enemy.transform.localRotation);
+                GameObject particleEffect = Instantiate(dispellEffect, new Vector3(enemy.transform.position.x, enemy.transform.position.y + 2, enemy.transform.position.z), enemy.transform.rotation);
                 particleEffect.GetComponent<ParticleSystem>().Play();
                 enemy.gameObject.SetActive(false);
             }
