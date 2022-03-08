@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class MazeEnemy : MonoBehaviour
 {
+    public AudioClip idleSound;
+    public AudioClip walkSound;
+    public AudioClip kickSound;
+    public AudioClip hurtSound;
+    public AudioClip poofSound;
+
     public GameObject enemySet;
     [SerializeField] GameObject tokenPrefab;
     [SerializeField] GameObject dispellEffect;
@@ -24,6 +30,7 @@ public class MazeEnemy : MonoBehaviour
 
     CharacterController enemy;
 
+    AudioSource audio;
     Animator anim;
 
     Transform player;
@@ -35,6 +42,7 @@ public class MazeEnemy : MonoBehaviour
         homePosition = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z);
         anim = GetComponent<Animator>();
         hitPoints = hitPointMax;
+        audio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -139,4 +147,11 @@ public class MazeEnemy : MonoBehaviour
 
     }
 
+    public void PlayPoofSound()
+    {
+        audio.volume = 1;
+        audio.pitch = 1;
+        audio.clip = poofSound;
+        audio.Play();
+    }
 }

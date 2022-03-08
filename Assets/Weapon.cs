@@ -12,6 +12,13 @@ public class Weapon : MonoBehaviour
     Renderer[] renderersToFlash;
     Material[] ogMaterials;
 
+    AudioSource audio;
+    Player player;
+    private void Start()
+    {
+        audio = GameObject.Find("Player").GetComponent<AudioSource>();
+        player = GameObject.Find("Player").GetComponent<Player>();
+    }
     void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out MazeEnemy enemy) && gameObject.tag == "Player Weapon" && !iFrames)
@@ -40,17 +47,32 @@ public class Weapon : MonoBehaviour
             else
             {
                 enemy.isPoof = true;
+                audio.volume = 5;
+                audio.pitch = 1;
+                audio.clip = player.poofSound;
+                audio.Play();
             }
             if (enemy.enemySet.GetComponentsInChildren<MazeEnemy>().Length > 1)
             {
                 StartCoroutine(PoofAllHome(enemy.GetComponent<MazeEnemy>()));
             }
         }
-        if (other.name == "Player" && gameObject.tag != "Player Weapon" && !iFramesPlayer && !other.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("block"))
+        if (other.name == "Player" && gameObject.tag != "Player Weapon" && !iFramesPlayer)
         {
-            iFramesPlayer = true;
-            StartCoroutine(FlashEnemy(other.gameObject));
-            other.GetComponent<Player>().takeDamage();
+            if (other.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("block"))
+            {
+                if (audio.isPlaying) { audio.Stop(); }
+                audio.volume = 0.1f;
+                audio.pitch = 1;
+                audio.clip = player.shieldSound;
+                audio.Play();
+            }
+            else
+            {
+                iFramesPlayer = true;
+                StartCoroutine(FlashEnemy(other.gameObject));
+                other.GetComponent<Player>().takeDamage();
+            }
         }
     }
     IEnumerator PoofAllHome(MazeEnemy data)

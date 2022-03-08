@@ -3,6 +3,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public AudioClip walkingSound;
+    public AudioClip runningSound;
+    public AudioClip damagedSound;
+    public AudioClip weaponSound;
+    public AudioClip shieldSound;
+    public AudioClip wallAppearingSound;
+    public AudioClip poofSound;
+
+
     public bool trueSight;
     [SerializeField] GameObject dispellEffect;
     [SerializeField] float trueSightTime;
@@ -24,7 +33,8 @@ public class Player : MonoBehaviour
     CharacterController character;
     Vector3 startPosition;
 
-    Animator anim;
+    public Animator anim;
+    public AudioSource audio;
 
     void Start()
     {
@@ -35,6 +45,7 @@ public class Player : MonoBehaviour
         hitPoints = hitPointMax;
         startPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         trueSightTimer = trueSightTime;
+        audio = gameObject.GetComponent<AudioSource>();
     }
 
     void Update()
@@ -46,8 +57,16 @@ public class Player : MonoBehaviour
 
         UpdateActions();
         UpdateTrueSight();
+        UpdateAudio();
     }
 
+    void UpdateAudio()
+    {
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("walking"))
+        {
+            audio.Stop();
+        }
+    }
     void UpdateTrueSight()
     {
         if (trueSight)
@@ -88,7 +107,13 @@ public class Player : MonoBehaviour
     }
 
     // Mouse input on the X axis increases the object's rotation on its Y axis (rotSpeed is the maximum rotation in degrees per second)
-    void UpdateRotation() { yRot += Input.GetAxis("Mouse X") * Time.deltaTime * rotSpeed; transform.eulerAngles = new Vector3(0, yRot); }
+    void UpdateRotation()
+    {
+        if (Input.GetAxis("Mouse X") > 0.1f || Input.GetAxis("Mouse X") < -0.1f)
+        {
+            yRot += Input.GetAxis("Mouse X") * Time.deltaTime * rotSpeed; transform.eulerAngles = new Vector3(0, yRot);
+        }
+    }
 
     // Mouse input on the Y axis interpolates both the position and angle of the camera behind the player (zoomSpeed is zoom percentage per second)
     void UpdateZoom() 
@@ -106,17 +131,17 @@ public class Player : MonoBehaviour
         //}
         //else
         //{
-            if (Input.GetKey(KeyCode.W)) { anim.SetBool("Is walking", true); } else { anim.SetBool("Is walking", false); }
-            if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W))
-            {
-                anim.SetBool("Is running", true);
-                runMultiplier = 2; // Player moves twice as fast holding shift
-            }
-            else
-            {
-                anim.SetBool("Is running", false);
-                runMultiplier = 1;
-            }
+        if (Input.GetKey(KeyCode.W)) { anim.SetBool("Is walking", true); } else { anim.SetBool("Is walking", false); }
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W))
+        {
+            anim.SetBool("Is running", true);
+            runMultiplier = 2; // Player moves twice as fast holding shift
+        }
+        else
+        {
+            anim.SetBool("Is running", false);
+            runMultiplier = 1;
+        }
         //}
         character.Move(moveSpeed * runMultiplier * Time.deltaTime * (transform.forward * Input.GetAxisRaw("Vertical") + transform.right * Input.GetAxisRaw("Horizontal")).normalized);
     }
@@ -132,7 +157,20 @@ public class Player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            //if (!anim.GetCurrentAnimatorStateInfo(0).IsName("attack"))
+            //{
+            //}
             anim.Play("attack");
+            if (audio.clip != weaponSound)
+            {
+                audio.clip = weaponSound;
+            }
+            if (!audio.isPlaying)
+            {
+                audio.volume = 0.5f;
+                audio.pitch = 1.2f;
+                audio.PlayDelayed(0.35f);
+            }
         }
         if (Input.GetMouseButton(1))
         {
@@ -151,6 +189,10 @@ public class Player : MonoBehaviour
             GameObject particleEffect = Instantiate(dispellEffect, new Vector3(hit.transform.localPosition.x, hit.transform.localPosition.y, hit.transform.localPosition.z), hit.transform.localRotation);
             particleEffect.GetComponent<ParticleSystem>().Play();
             hit.gameObject.SetActive(false);
+            audio.volume = 5;
+            audio.pitch = 1;
+            audio.clip = poofSound;
+            audio.Play();
         }
         if (hit.collider.tag == "False Path")
         {
@@ -158,6 +200,10 @@ public class Player : MonoBehaviour
         }
         if (hit.collider.tag == "True Sight Token")
         {
+            audio.volume = 5f;
+            audio.pitch = 1;
+            audio.clip = poofSound;
+            audio.Play();
             Destroy(hit.gameObject);
             trueSight = true;
         }
@@ -166,6 +212,9 @@ public class Player : MonoBehaviour
     {
         if (!mesh.enabled)
         {
+            audio.volume = 2f;
+            audio.clip = wallAppearingSound;
+            audio.Play();
             mesh.enabled = true;
 
             // Set mesh to transparent (see Unity Documentation "Changing the Rendering Mode using a Script")
