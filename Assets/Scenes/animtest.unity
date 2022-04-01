@@ -455,3 +455,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 2
   deceleration: 2
+  maxWalkVelocity: 1
+  maxRunVelocity: 2
