@@ -32,7 +32,7 @@ public class CharacterAnimation : MonoBehaviour
         //set current max velocity
         float currentMaxVelocity = runPressed ? maxRunVelocity : maxWalkVelocity;
 
-        //button presses
+    //button presses
         if (forwardPressed && velocityZ < currentMaxVelocity)
         {
             velocityZ += Time.deltaTime * acceleration;
@@ -53,7 +53,7 @@ public class CharacterAnimation : MonoBehaviour
             velocityZ -= Time.deltaTime * acceleration;
         }
 
-        //decelerations
+    //decelerations
         if (!forwardPressed && velocityZ > 0.0f)
         {
             velocityZ -= Time.deltaTime * deceleration;
@@ -78,24 +78,74 @@ public class CharacterAnimation : MonoBehaviour
         {
             velocityX -= Time.deltaTime * deceleration;
         }
-        //if no buttons pressed and velocity isn't zero set to zero
+    //if no buttons pressed and velocity isn't zero set to zero
         if (!leftPressed && !rightPressed && velocityX != 0.0f && (velocityX > -0.1f && velocityX < 0.1f))
         {
             velocityX = 0.0f;
         }
-
+    //Forward run to walk decelleration
         if (forwardPressed && runPressed && velocityZ > currentMaxVelocity)
         {
             velocityZ = currentMaxVelocity;
         }
+        
         else if (forwardPressed && velocityZ > currentMaxVelocity)
         {
             velocityZ -= Time.deltaTime * deceleration;
         }
+        
         else if (forwardPressed && velocityZ < currentMaxVelocity && velocityZ > (currentMaxVelocity - 1.0f))
         {
             velocityZ = currentMaxVelocity;
         }
+    //Left Run to walk Decelleration
+        if (leftPressed && runPressed && velocityX > currentMaxVelocity)
+        {
+            velocityX = currentMaxVelocity;
+        }
+
+        else if (leftPressed && velocityX > currentMaxVelocity)
+        {
+            velocityX -= Time.deltaTime * deceleration;
+        }
+
+        else if (leftPressed && velocityX < currentMaxVelocity && velocityX > (currentMaxVelocity - 1.0f))
+        {
+            velocityX = currentMaxVelocity;
+        }
+
+    //right Run to walk Decelleration
+        if (rightPressed && runPressed && velocityX < -currentMaxVelocity)
+        {
+            velocityX = -currentMaxVelocity;
+        }
+
+        else if (rightPressed && velocityX < -currentMaxVelocity)
+        {
+            velocityX += Time.deltaTime * deceleration;
+        }
+
+        else if (rightPressed && velocityX > -currentMaxVelocity && velocityX > (-currentMaxVelocity + 1.0f))
+        {
+            velocityX = -currentMaxVelocity;
+        }
+
+    //Back Run to walk Decelleration
+        if (backPressed && runPressed && velocityZ < -currentMaxVelocity)
+        {
+            velocityZ = -currentMaxVelocity;
+        }
+
+        else if (backPressed && velocityZ < -currentMaxVelocity)
+        {
+            velocityZ += Time.deltaTime * deceleration;
+        }
+
+        else if (backPressed && velocityZ > -currentMaxVelocity && velocityZ > (-currentMaxVelocity + 1.0f))
+        {
+            velocityZ = -currentMaxVelocity;
+        }
+
         //set anim floats
         animator.SetFloat("velocityZ", velocityZ);
         animator.SetFloat("velocityX", velocityX);
