@@ -46,6 +46,8 @@ public class Player : MonoBehaviour
         startPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         trueSightTimer = trueSightTime;
         audio = gameObject.GetComponent<AudioSource>();
+        anim.SetLayerWeight(1, 0.0f);
+
     }
 
     void Update()
@@ -160,7 +162,9 @@ public class Player : MonoBehaviour
             //if (!anim.GetCurrentAnimatorStateInfo(0).IsName("attack"))
             //{
             //}
+            
             anim.Play("attack");
+            anim.SetLayerWeight(1, 1.0f);
             if (audio.clip != weaponSound)
             {
                 audio.clip = weaponSound;
@@ -178,7 +182,9 @@ public class Player : MonoBehaviour
         }
         else if (anim.GetCurrentAnimatorStateInfo(0).IsName("block"))
         {
+            anim.SetLayerWeight(1, 0.0f);
             anim.Play("idle");
+            
         }
     }
 
