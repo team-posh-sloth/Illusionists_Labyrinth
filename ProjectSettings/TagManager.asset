@@ -3,13 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - False Path
-  - Enemy
-  - Player Weapon
-  - False Wall
-  - True Sight Token
-  - Illusionist
+  tags: []
   layers:
   - Default
   - TransparentFX
