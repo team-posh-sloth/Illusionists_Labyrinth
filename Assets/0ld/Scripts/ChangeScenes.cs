@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ChangeScenes : MonoBehaviour
+namespace Old_Labyrinth
 {
-    void OnTriggerEnter(Collider other)
+    public class ChangeScenes : MonoBehaviour
     {
-        if (other.TryGetComponent(out Player player))
+        void OnTriggerEnter(Collider other)
         {
-            SceneManager.LoadScene("World");
+            if (other.TryGetComponent(out Player player))
+            {
+                SceneManager.LoadScene("World");
+            }
         }
     }
 }
