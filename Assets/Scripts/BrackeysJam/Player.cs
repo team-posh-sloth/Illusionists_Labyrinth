@@ -176,20 +176,37 @@ public class Player : MonoBehaviour
                 audio.PlayDelayed(0.35f);
             }
         }
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButtonDown(1))
         {
             anim.Play("block",1);
         }
-        else if (anim.GetCurrentAnimatorStateInfo(0).IsName("block"))
+
+        if (Input.GetMouseButtonUp(1))
         {
-            anim.Play("idle",1);
+            anim.Play("idle", 1);
+        }
+
+       // if (anim.GetCurrentAnimatorStateInfo(1).IsName("idle"))
+       // {
+            //anim.Play("idle", 1);
+
+
+            // if (anim.GetLayerWeight(1) != 0.0f)
+            //     {
+            //   anim.SetLayerWeight(1, 0.0f);
+            //  }  don't know where to put this
+      //  }
+
+      //  else if (anim.GetCurrentAnimatorStateInfo(1).IsName("block"))
+     //   {
+        //    anim.Play("idle",1);
           
 
            // if (anim.GetLayerWeight(1) != 0.0f)
        //     {
              //   anim.SetLayerWeight(1, 0.0f);
           //  }  don't know where to put this
-        }
+       // }
         
     }
 
