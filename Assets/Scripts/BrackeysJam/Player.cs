@@ -163,7 +163,7 @@ public class Player : MonoBehaviour
             //{
             //}
             
-            anim.Play("attack");
+            anim.Play("attack",1);
             anim.SetLayerWeight(1, 1.0f);
             if (audio.clip != weaponSound)
             {
@@ -178,15 +178,21 @@ public class Player : MonoBehaviour
         }
         if (Input.GetMouseButton(1))
         {
-            anim.Play("block");
+            anim.Play("block",1);
         }
         else if (anim.GetCurrentAnimatorStateInfo(0).IsName("block"))
         {
-            anim.SetLayerWeight(1, 0.0f);
-            anim.Play("idle");
-            
+            anim.Play("idle",1);
+          
+
+           // if (anim.GetLayerWeight(1) != 0.0f)
+       //     {
+             //   anim.SetLayerWeight(1, 0.0f);
+          //  }  don't know where to put this
         }
+        
     }
+
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
