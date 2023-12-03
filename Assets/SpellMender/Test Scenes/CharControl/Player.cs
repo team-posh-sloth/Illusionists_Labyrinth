@@ -6,18 +6,27 @@ namespace Labyrinth
 {
     public class Player : MonoBehaviour
     {
+        public float speed;
+        public static Vector3 moveDirection;
+
         private void Start()
         {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Confined;
+            Game.LockCursor();
         }
 
         private void Update()
         {
-            if (Input.GetKey(KeyCode.Escape))
-            {
-                Application.Quit();
-            }
+            Actions.Read();
+            Move();
+        }
+
+        private void Move()
+        {
+            //To-Do: Move based on camera direction
+            //To-Do: Start the camera further away from the player
+            //To-Do: Set deadzone for camera movement (don't make it move so easily)
+            transform.position += moveDirection * speed * Time.deltaTime;
+            transform.LookAt(moveDirection + transform.position);
         }
 
         enum MoveState
